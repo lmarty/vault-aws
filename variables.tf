@@ -61,9 +61,9 @@ variable "public_vault_ssh" {
   default     = false
 }
 
-variable "public_vault_loadbalancer" {
-  description = "Assigns a public IP to the vault ELB. defaults to true."
-  default     = true
+variable "vault_loadbalancer_isinternal" {
+  description = "If true, do not assign a public IP. Defaults to false"
+  default     = false
 }
 
 variable "public_vault" {

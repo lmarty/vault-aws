@@ -93,9 +93,9 @@ module "vault_lb_aws" {
   create             = "${var.create}"
   name               = "${var.name}"
   vpc_id             = "${var.vpc_id}"
-  cidr_blocks        = ["${var.public_vault_loadbalancer ? "0.0.0.0/0" : var.vpc_cidr}"] # If public_vault_loadbalancer is set to true, assign public ip and allow inbound
+  cidr_blocks        = ["${var.vault_loadbalancer_isinternal ? "0.0.0.0/0" : var.vpc_cidr}"] # If vault_loadbalancer_isinternal is set to true, don't assign a public ip 
   subnet_ids         = ["${var.subnet_ids}"]
-  is_internal_lb     = "${!var.public_vault_loadbalancer}"
+  is_internal_lb     = "${!var.vault_loadbalancer_isinternal}"
   use_lb_cert        = "${var.use_lb_cert}"
   lb_cert            = "${var.lb_cert}"
   lb_private_key     = "${var.lb_private_key}"
