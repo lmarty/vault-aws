@@ -69,7 +69,7 @@ resource "aws_launch_configuration" "vault" {
   count = "${var.create ? 1 : 0}"
 
   name_prefix                 = "${format("%s-vault-", var.name)}"
-  associate_public_ip_address = "${var.public}"
+  associate_public_ip_address = "${var.public_vault}"
   ebs_optimized               = false
   instance_type               = "${var.instance_type}"
   image_id                    = "${var.image_id != "" ? var.image_id : element(concat(data.aws_ami.vault.*.id, list("")), 0)}"                     # TODO: Workaround for issue #11210
