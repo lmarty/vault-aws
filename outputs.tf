@@ -61,7 +61,7 @@ host Vault CLI.
 You can interact with Vault using any of the
 CLI (https://www.vaultproject.io/docs/commands/index.html) or
 API (https://www.vaultproject.io/api/index.html) commands.
-${__builtin_StringToFloat(replace(replace(var.vault_version, "-ent", ""), ".", "")) >= 0100 || replace(var.vault_version, "-ent", "") != var.vault_version ? format("\nVault UI: %s%s %s\n\n%s", var.use_lb_cert ? "https://" : "http://", module.vault_lb_aws.vault_lb_dns, var.public ? "(Public)" : "(Internal)", var.public ? "The Vault nodes are in a public subnet with UI & SSH access open from the\ninternet. WARNING - DO NOT DO THIS IN PRODUCTION!\n" : "The Vault node(s) are in a private subnet, UI access can only be achieved inside\nthe network through a VPN.\n") : ""}
+${__builtin_StringToFloat(replace(replace(var.vault_version, "-ent", ""), ".", "")) >= 0100 || replace(var.vault_version, "-ent", "") != var.vault_version ? format("\nVault UI: %s%s %s\n\n%s", var.use_lb_cert ? "https://" : "http://", module.vault_lb_aws.vault_lb_dns, var.lb_public ? "(Internal)" : "(Public)", var.public ? "The Vault nodes are in a public subnet with UI & SSH access open from the\ninternet. WARNING - DO NOT DO THIS IN PRODUCTION!\n" : "The Vault node(s) are in a private subnet, UI access can only be achieved inside\nthe network through a VPN.Or if lb_internal is set, the LBs public address \n") : ""}
 To start interacting with Vault, set your Vault token to authenticate requests.
 
 If using the "Vault Dev Guide", Vault is running in -dev mode & this has been set
